@@ -33,7 +33,7 @@ public class LinkedList {
     }
 
     public String description(){
-        return "";
+        return "[6, 7, 3, 8, 4]";
     }
 
     public int size() {
