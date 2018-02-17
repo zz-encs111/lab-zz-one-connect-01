@@ -13,25 +13,97 @@ class SolutionTest {
     private Solution solution;
 
     @BeforeEach
-    void before() {
+    void setUp() {
         solution = new Solution();
     }
 
-    @Nested
-    class isValid {
+    @Test
+    void emptyString() {
+        assertEquals(true, solution.isValid(""));
+    }
 
-        @Test
-        @DisplayName("Empty String")
-        void t1() {
-            assertEquals(false, solution.isValid(""));
-        }
+    @Test
+    void positiveCase1() {
+        assertEquals(true, solution.isValid("()"));
+    }
 
-        @Test
-        @DisplayName("Case 1")
-        void t2() {
-            assertEquals(true, solution.isValid("()"));
-        }
+    @Test
+    void positiveCase2() {
+        assertEquals(true, solution.isValid("()()"));
+    }
 
+    @Test
+    void positiveCase3() {
+        assertEquals(true, solution.isValid("()[]"));
+    }
 
+    @Test
+    void positiveCase4() {
+        assertEquals(true, solution.isValid("(())"));
+    }
+
+    @Test
+    void positiveCase5() {
+        assertEquals(true, solution.isValid("([])"));
+    }
+
+    @Test
+    void negativeCase1() {
+        assertEquals(false, solution.isValid("("));
+    }
+
+    @Test
+    void negativeCase2() {
+        assertEquals(false, solution.isValid(")"));
+    }
+
+    @Test
+    void negativeCase3() {
+        assertEquals(false, solution.isValid(")("));
+    }
+
+    @Test
+    void negativeCase4() {
+        assertEquals(false, solution.isValid("(]"));
+    }
+
+    @Test
+    void negativeCase5() {
+        assertEquals(false, solution.isValid("()("));
+    }
+
+    @Test
+    void negativeCase6() {
+        assertEquals(false, solution.isValid("()["));
+    }
+
+    @Test
+    void negativeCase7() {
+        assertEquals(false, solution.isValid("()]"));
+    }
+
+    @Test
+    void negativeCase8() {
+        assertEquals(false, solution.isValid("([)]"));
+    }
+
+    @Test
+    void negativeCase9() {
+        assertEquals(false, solution.isValid("(())["));
+    }
+
+    @Test
+    void negativeCase10() {
+        assertEquals(false, solution.isValid("(())]"));
+    }
+
+    @Test
+    void complexCase1() {
+        assertEquals(true, solution.isValid("({})[]()([()]{})"));
+    }
+
+    @Test
+    void complexCase2() {
+        assertEquals(false, solution.isValid("({})[]()[[()]{})"));
     }
 }
